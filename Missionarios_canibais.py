@@ -13,9 +13,10 @@ class Estado:
         self.barco = barco
         self.pai = None
         self.filhos = []
+        self.passo = None #ação tomada pra chegar no estado
 
     def ver_estado(self):
-        print(self.min_e,self.min_d,self.can_e,self.can_d,self.barco)
+        print(self.min_e,self.min_d,self.can_e,self.can_d,self.barco,self.passo)
 
     def verificar_solucao(self):
         missionarios = False
@@ -82,6 +83,7 @@ class Estado:
                 
             novo = Estado(missionarios_esq,missionarios_dir,canibais_esq,canibais_dir,barco)
             novo.pai = self
+            novo.passo = movimento
             if(novo.estado_valido()):
                 self.filhos.append(novo)
             
@@ -121,5 +123,6 @@ class Solucao:
 def main():
     resolver = Solucao()
     resolver.gerar_solucao()
+    print("MISSIONARIOS ESQ || MISSIONARIOS DIR || CANIBAIS ESQ || CANIBAIS DIR|| MOVIMENTO APLICADO (Missionarios, canibais)")
     resolver.mostrar_caminho()
 main()
