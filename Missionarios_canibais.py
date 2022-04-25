@@ -104,8 +104,6 @@ class Solucao:
         #Iterar pelos nós da lista
         for estado in self.lista:
             if(estado.verificar_solucao()):#VERIFICA SE É SOLUÇÃO
-                self.caminho.insert(0,estado)#ACHEI, GUARDA NA LISTA AÍ
-
                 while(estado.pai != None):#VAMO LOOPAR ATÉ CHEGAR NA ORIGEM
                     self.caminho.insert(0,estado)#COLOCA NA PRIMEIRA POSIÇÃO
                     estado = estado.pai#SETA O NOVO ESTADO PRA SER O PAI DELE (tipo recursão)
