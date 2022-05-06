@@ -26,11 +26,9 @@ class no:
         #salvo ela como estação desse nó e se o pai tiver estacao = none, significa que é o no de origem
         for estacao in no.estacoes:
             if estacao in self.estacoes:
-                if(self.estacao == None):
-                    self.estacao = estacao
                 no.estacao = estacao
                 break
-        if(no.estacao == self.estacao):#N teve baldeação
+        if(no.estacao == self.estacao or self.estacao == None):#N teve baldeação #None indica que é o nó pai
             return 0
         return 4#teve
 
@@ -81,7 +79,7 @@ class solucao:
 
     def mostrar_caminho(self):
         for no in self.caminho:
-            print('ID: {} CUSTO ACUMULADO (minutos): {}'.format(no.id + 1,no.custo))
+            print('ID: {} CUSTO ACUMULADO (minutos): {} ESTACAO: {}'.format(no.id + 1,no.custo,no.estacao))
         
 
     def a_star(self):
